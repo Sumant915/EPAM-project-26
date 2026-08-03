@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Dashboard - ABC Bank</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+
+    
+    <header class="app-header">
+      <div class="header-logo-section">
+
+        <svg class="bank-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="22" x2="21" y2="22"></line>
+          <line x1="6" y1="18" x2="6" y2="11"></line>
+          <line x1="10" y1="18" x2="10" y2="11"></line>
+          <line x1="14" y1="18" x2="14" y2="11"></line>
+          <line x1="18" y1="18" x2="18" y2="11"></line>
+          <polygon points="12 2 2 7 22 7 12 2"></polygon>
+        </svg>
+        <div class="header-titles">
+          <span class="bank-name">ABC Bank</span>
+          <h1 class="dashboard-title">Customer Dashboard</h1>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="datetime-widget">
+          <svg class="widget-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <div class="datetime-text">
+            <span id="live-date">Loading date...</span>
+            <span id="live-time">Loading time...</span>
+          </div>
+        </div>
+
+        <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+  
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="welcome-bar">
+      <div class="greeting-content">
+        <h2 id="greeting-text">Welcome back</h2>
+        <p class="greeting-subtitle">Sumantra Singh &bull; Premium Savings Account Status: Active</p>
+      </div>
+      <div class="system-status-pill">
+        <span class="status-dot"></span>
+        <span class="status-text">Secure Connection</span>
+      </div>
+    </div>
+
+    <main class="dashboard-grid">
+
+      <section class="grid-column left-column">
+        
+
+        <div class="dashboard-card customer-card">
+          <div class="card-header">
+            <h3>Account Details</h3>
+            <span class="card-badge badge-blue">Primary</span>
+          </div>
+          
+          <div class="customer-info-body">
+            <div class="info-group">
+              <span class="info-label">Customer Name</span>
+              <span class="info-value text-highlight" id="cust-name">Sumantra Singh</span>
+            </div>
+
+            <div class="info-grid">
+              <div class="info-group">
+                <span class="info-label">Account Number</span>
+                <span class="info-value" id="cust-acc-num">XXXX XXXX 4321</span>
+              </div>
+              <div class="info-group">
+                <span class="info-label">Account Type</span>
+                <span class="info-value" id="cust-acc-type">Savings</span>
+              </div>
+            </div>
+
+            <div class="balance-container">
+              <div class="balance-meta">
+                <span class="info-label">Current Available Balance</span>
+                <button id="balance-toggle-btn" class="icon-btn" aria-label="Toggle Balance Visibility">
+
+                  <svg id="eye-open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+               
+                  <svg id="eye-closed-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                  </svg>
+                </button>
+              </div>
+              <div class="balance-display-wrapper">
+                <span id="balance-val" class="balance-amount">₹25,000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  
+        <div class="dashboard-card action-card check-balance-card">
+          <div class="card-header">
+            <h3>Ledger Inquiry</h3>
+            <svg class="section-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12" y2="18.01"></line>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="action-description">Query the bank's active directory database to fetch and display the exact ledger balance down to the millisecond.</p>
+            
+            <div id="inquiry-result-box" class="inquiry-result-box hidden">
+              <span class="inquiry-title">Current Ledger Balance</span>
+              <span id="inquiry-balance" class="inquiry-val">₹25,000.00</span>
+              <span id="inquiry-time" class="inquiry-timestamp">as of 12:00:00 PM</span>
+            </div>
+
+            <button id="check-balance-btn" class="btn btn-secondary btn-full">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 11.08V12a8 8 0 1 1-4.8-7.32"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              Check Balance
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+   
+      <section class="grid-column right-column">
+        
+
+        <div class="dashboard-card operations-card">
+          <div class="card-header no-border">
+            <div class="tabs-header">
+              <button id="tab-deposit-btn" class="tab-btn active">
+                <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Deposit Funds
+              </button>
+              <button id="tab-withdraw-btn" class="tab-btn">
+                <svg class="tab-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Withdraw Funds
+              </button>
+            </div>
+          </div>
+
+          <div class="card-body">
+   
+            <div id="operation-alert" class="alert-box hidden" role="alert">
+              <span id="alert-icon" class="alert-icon"></span>
+              <span id="alert-message" class="alert-message"></span>
+            </div>
+
+
+            <div id="panel-deposit" class="tab-panel">
+              <p class="panel-desc">Securely credit funds to your savings account immediately.</p>
+              <form id="deposit-form" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                  <label for="deposit-amount">Deposit Amount (₹)</label>
+                  <div class="input-wrapper">
+                    <span class="currency-symbol">₹</span>
+                    <input type="number" id="deposit-amount" placeholder="Enter amount to deposit" min="1" step="any" required>
+                  </div>
+                  <span class="helper-text">Enter positive values only (e.g. 500, 1500)</span>
+                </div>
+                <button type="button" id="submit-deposit-btn" class="btn btn-success btn-full">
+                  Confirm Deposit
+                </button>
+              </form>
+            </div>
+
+        
+            <div id="panel-withdraw" class="tab-panel hidden">
+              <p class="panel-desc">Withdraw funds instantly. Ensure you have sufficient available balance.</p>
+              <form id="withdraw-form" onsubmit="event.preventDefault();">
+                <div class="form-group">
+                  <label for="withdraw-amount">Withdrawal Amount (₹)</label>
+                  <div class="input-wrapper">
+                    <span class="currency-symbol">₹</span>
+                    <input type="number" id="withdraw-amount" placeholder="Enter amount to withdraw" min="1" step="any" required>
+                  </div>
+                  <span class="helper-text">Maximum single withdrawal is subject to available balance.</span>
+                </div>
+                <button type="button" id="submit-withdraw-btn" class="btn btn-danger btn-full">
+                  Confirm Withdrawal
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="dashboard-card history-card">
+          <div class="card-header">
+            <div class="header-left">
+              <h3>Transaction History</h3>
+              <span class="history-count-badge" id="history-badge">0 Transactions</span>
+            </div>
+            <span class="card-badge badge-gray">Real-time Ledger</span>
+          </div>
+
+          <div class="history-body">
+        
+            <div id="empty-history-state" class="empty-state hidden">
+              <svg class="empty-state-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" y1="21" x2="4" y2="14"></line>
+                <line x1="4" y1="10" x2="4" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12" y2="3"></line>
+                <line x1="20" y1="21" x2="20" y2="16"></line>
+                <line x1="20" y1="12" x2="20" y2="3"></line>
+                <line x1="1" y1="14" x2="7" y2="14"></line>
+                <line x1="9" y1="8" x2="15" y2="8"></line>
+                <line x1="17" y1="16" x2="23" y2="16"></line>
+              </svg>
+              <p>No recent activity. Make your first deposit or withdrawal above.</p>
+            </div>
+
+
+            <div class="transaction-list-container">
+              <ul id="transaction-list" class="transaction-list">
+         
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 ABC Bank. All rights reserved.</p>
+      <p class="footer-meta">Secure 256-bit SSL Encrypted Dashboard Platform</p>
+    </footer>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
